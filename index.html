@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Cross-weave Sample</title>
+    <meta charset="UTF-8">
+    <meta>
+    <script src="bower_components/requirejs/require.js"></script>
+    <script>
+        require.config({
+            "context": "1.x",
+            baseUrl: 'bower_components',
+            // define all package layout for all dependencies
+            packages: [
+                {
+                    name: 'jquery',
+                    main: 'dist/jquery.js'
+                },
+                {
+                    name: 'poly',
+                    main: 'poly.js'
+                },
+                {
+                    name: 'requirejs',
+                    main: 'require.js'
+                },
+                {
+                    name: 'when',
+                    main: 'when.js'
+                },
+                {
+                    name: 'troopjs1',
+                    main: 'troopjs-bundle.js'
+                },
+                {
+                    name: 'app',
+                    location: '../'
+                }
+            ],
+            "map": {
+                "*": {
+                    "config": "app/config"
+                }
+            },
+            deps: ['troopjs1']
+        });
+
+        require.config({
+            baseUrl: 'bower_components',
+            // define all package layout for all troopjs dependencies
+            packages: [
+                {
+                    name: 'jquery',
+                    main: 'dist/jquery.js'
+                },
+                {
+                    name: 'poly',
+                    main: 'poly.js'
+                },
+                {
+                    name: 'requirejs',
+                    main: 'require.js'
+                },
+                {
+                    name: 'when',
+                    main: 'when.js'
+                },
+                {
+                    name: 'troopjs',
+                    main: 'maxi.js'
+                },
+                {
+                    name: 'app',
+                    location: '../'
+                }
+            ],
+            "map": {
+                "*": {
+                    "mv": "troopjs-requirejs/multiversion"
+                }
+            },
+            deps: ['troopjs'],
+            callback: function () {
+                require(['troopjs-browser/application/widget', 'jquery'], function (App, $) {
+                    App($('html')).start();
+                });
+            }
+        });
+    </script>
+</head>
+<body>
+<h2>
+    Demonstrate weaving TroopJS 1.x widget from 2.x context
+</h2>
+<div data-weave="app/foo"></div>
+<div data-weave="mv!app/bar#1.x"></div>
+</body>
+</html>

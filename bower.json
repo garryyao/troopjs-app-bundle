@@ -1,0 +1,29 @@
+{
+  "name": "troopjs-app-bundle",
+  "version": "0.0.0",
+  "authors": [
+    "Garry Yao <yaojun85@gmail.com>"
+  ],
+  "description": "Sample application using troopjs-bundle",
+  "main": "index.html",
+  "keywords": [
+    "troopjs"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "poly": "~0.6.0",
+    "requirejs": "~2.1.11",
+    "troopjs": "troopjs#build/2.x",
+    "troopjs1": "troopjs#build/1.x",
+    "when": "~3.2.2"
+  }
+}
